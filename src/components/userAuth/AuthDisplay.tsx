@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export const AuthDisplay: React.VFC = () => {
-  return <div></div>;
+  const auth = useContext(AuthContext);
+  return <div>{auth ? <div>ログアウト中</div> : <div>ログイン中</div>}</div>;
 };
