@@ -1,11 +1,21 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const AuthContext = createContext<boolean>(false);
+type InitialState = {
+  userAuth: boolean;
+  setUserAuth: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const AuthContext = createContext<InitialState | null>(null);
 
 export const AuthProvider: React.VFC<Props> = ({ children }) => {
-  return <AuthContext.Provider value={false}>{children}</AuthContext.Provider>;
+  const [userAuth, setUserAuth] = useState(false);
+  return (
+    <AuthContext.Provider value={{ userAuth, setUserAuth }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
