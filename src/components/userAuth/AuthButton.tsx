@@ -13,12 +13,12 @@ export const AuthButton: React.VFC = () => {
   };
   console.log(auth);
   return (
-    <div>
+    <>
       {auth?.userAuth ? (
         <button onClick={handleLogout}>ログアウト</button>
       ) : (
         <button onClick={handleLogin}>ログイン</button>
       )}
-    </div>
+    </>
   );
 };
